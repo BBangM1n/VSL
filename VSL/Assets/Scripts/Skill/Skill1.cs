@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill1 : SkillBase
 {
+    // Fields
     private Vector3 direction;
 
+    // Inheritances
     public override void SetDirection(Vector3 newDirection)
     {
         direction = newDirection.normalized;

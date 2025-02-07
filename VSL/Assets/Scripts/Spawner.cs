@@ -15,7 +15,6 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-
         if (timer > 0.2f && GameManager.Instance.MaxUnitCount > GameManager.Instance.UnitCount)
         {
             timer = 0;

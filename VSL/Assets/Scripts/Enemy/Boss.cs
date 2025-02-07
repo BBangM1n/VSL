@@ -20,8 +20,8 @@ public class Boss : MonoBehaviour
     public bool stopMove = false;
 
     private bool IsHit = false;
-
     private bool isPatternRunning = false;
+
     private int patternNumber;
 
     // Unity Messages
@@ -58,7 +58,6 @@ public class Boss : MonoBehaviour
         Debug.Log(target.position);
     }
 
-    // Methods
     // Functions
     private void SetAnimatorRunState(float state)
     {
@@ -72,7 +71,7 @@ public class Boss : MonoBehaviour
         GameManager.Instance.UnitCount--;
         GameManager.Instance.getExp(1);
         gameObject.SetActive(false);
-        NowHealth = MaxHealth; // 피 초기화
+        NowHealth = MaxHealth;
     }
     private void SetAnimatorAttackState(float AttackState = 0, float NormalState = 0, float SkillState = 0)
     {
@@ -117,7 +116,6 @@ public class Boss : MonoBehaviour
             spriteRenderers[i].color = Color.white;
         }
     }
-    // 패턴 루프
     IEnumerator PatternLoop()
     {
         while (true)
@@ -148,7 +146,6 @@ public class Boss : MonoBehaviour
 
                 isPatternRunning = false;
 
-                // 패턴 사이 딜레이
                 yield return new WaitForSeconds(10.0f);
             }
 
@@ -243,8 +240,8 @@ public class Boss : MonoBehaviour
 
         anim.SetTrigger("Attack");
 
-        int sphereCount = 5; // 생성할 구체 개수
-        float spawnRadius = 30.0f; // 보스를 중심으로 생성할 반경
+        int sphereCount = 5;
+        float spawnRadius = 30.0f;
 
         for (int i = 0; i < sphereCount; i++)
         {

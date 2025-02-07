@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class SkillTree : MonoBehaviour
 {
+    // Fields
     [SerializeField] private SkillPopup skillPopup;
 
+    // Unity Messages
     private void OnEnable()
     {
         skillPopup.OnConfirm += UnlockSkill;
     }
-
     private void OnDisable()
     {
         skillPopup.OnConfirm -= UnlockSkill;
     }
-
     private void Start()
     {
         RegisterSkillButtons();
         UpdateSkillTree();
     }
 
+    // Functions
     private void RegisterSkillButtons()
     {
         foreach (var skill in SkillTreeManager.Instance.SkillBranchA)
@@ -31,7 +32,6 @@ public class SkillTree : MonoBehaviour
             skill.RegisterClickEvent(ShowPopup);
         }
     }
-
     private void UnlockSkill()
     {
         if (GameManager.Instance.Level >= skillPopup.RequiredLevel)
@@ -44,11 +44,32 @@ public class SkillTree : MonoBehaviour
             Debug.Log("레벨이 부족합니다.");
         }
     }
-
     private void UpdateSkillTree()
     {
         string learnedSkillCode = GameManager.Instance.LearnedSkillCode;
-        if (string.IsNullOrEmpty(learnedSkillCode)) return;
+
+        if (string.IsNullOrEmpty(learnedSkillCode))
+        {
+            if (SkillTreeManager.Instance.SkillBranchA.Count > 0)
+            {
+                SkillTreeManager.Instance.SkillBranchA[0].SkillButton.gameObject.SetActive(true);
+            }
+            if (SkillTreeManager.Instance.SkillBranchB.Count > 0)
+            {
+                SkillTreeManager.Instance.SkillBranchB[0].SkillButton.gameObject.SetActive(true);
+            }
+            return;
+        }
+
+        if (learnedSkillCode.StartsWith("A") && SkillTreeManager.Instance.SkillBranchB.Count > 0)
+        {
+            SkillTreeManager.Instance.SkillBranchB[0].SkillButton.gameObject.SetActive(false);
+        }
+
+        else if (learnedSkillCode.StartsWith("B") && SkillTreeManager.Instance.SkillBranchA.Count > 0)
+        {
+            SkillTreeManager.Instance.SkillBranchA[0].SkillButton.gameObject.SetActive(false);
+        }
 
         var skillList = learnedSkillCode.StartsWith("A") ? SkillTreeManager.Instance.SkillBranchA : SkillTreeManager.Instance.SkillBranchB;
         int skillIndex = int.Parse(learnedSkillCode.Substring(1));
@@ -66,7 +87,6 @@ public class SkillTree : MonoBehaviour
             skillPopup.SetPopupInfo(nextSkill);
         }
     }
-
     private void ShowPopup(SkillInfo skill)
     {
         skillPopup.SetPopupInfo(skill);

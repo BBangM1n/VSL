@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMove : MonoBehaviour
@@ -20,7 +18,7 @@ public class CameraMove : MonoBehaviour
 
         targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
         targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
-         
+
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
 
         transform.position = smoothedPosition;

@@ -1,17 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossSkill2 : SkillBase
 {
+    // Fields
     private Transform target;
 
+    // Inheritances
     protected override void Start()
     {
         base.Start();
         StartCoroutine(DestroyObject());
     }
-
     public override void SetDirection(Vector3 newTarget)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -21,7 +21,6 @@ public class BossSkill2 : SkillBase
             target = player.transform;
         }
     }
-
     protected override void Move()
     {
         if (target != null)
@@ -32,6 +31,7 @@ public class BossSkill2 : SkillBase
         }
     }
 
+    // Unity Coroutine
     private IEnumerator DestroyObject()
     {
         yield return new WaitForSeconds(10);

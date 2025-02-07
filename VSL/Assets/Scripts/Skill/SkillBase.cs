@@ -9,23 +9,21 @@ public abstract class SkillBase : MonoBehaviour
 
     public float Damage = 3;
 
-    // Unity Messages
+    // Inheritances
     protected virtual void Start()
     {
         startPosition = transform.position;
     }
-
     protected virtual void Update()
     {
         Move();
         CheckRange();
     }
-
-    // Methods
     public abstract void SetDirection(Vector3 direction);
 
     protected abstract void Move();
 
+    // Functions
     private void CheckRange()
     {
         if (Vector3.Distance(startPosition, transform.position) > range)
@@ -34,6 +32,7 @@ public abstract class SkillBase : MonoBehaviour
         }
     }
 
+    // Methods
     public void ActivateSkill()
     {
         Move();

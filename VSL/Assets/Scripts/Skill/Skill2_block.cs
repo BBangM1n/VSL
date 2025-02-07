@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill2_block : SkillBase
 {
+    // Fields
     private Vector3 direction;
 
-    // 방향 설정
+    // Inheritances
     public override void SetDirection(Vector3 newDirection)
     {
         direction = newDirection.normalized;
     }
-
     protected override void Move()
     {
         if (direction != Vector3.zero)

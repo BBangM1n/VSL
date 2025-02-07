@@ -725,12 +725,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055671c920d8f1b47af75cbe4d2e2f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Code: 
-  Image: {fileID: 0}
-  Skillbutton: {fileID: 240175546020946501}
-  Learn: 0
+  SkillCode: 
+  SkillImage: {fileID: 5505684642660498185}
+  RequiredLevel: 0
+  SkillButton: {fileID: 240175546020946501}
+  IsUnlocked: 0
   SkillName: 
-  Info: 
+  SkillDescription: 
 --- !u!1 &5570780612119944150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,11 +1071,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c00b3b76b12d54e8f3e4fead6c99bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yesButton: {fileID: 6485496081679999733}
-  noButton: {fileID: 726535144217514344}
+  confirmButton: {fileID: 0}
+  cancelButton: {fileID: 0}
   skillImage: {fileID: 779699275934830225}
-  skillName: {fileID: 1774744794925000024}
-  skillInfo: {fileID: 4237184555468153280}
+  skillNameText: {fileID: 0}
+  skillDescriptionText: {fileID: 0}
 --- !u!1 &8703817878143297729
 GameObject:
   m_ObjectHideFlags: 0

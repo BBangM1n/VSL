@@ -6,6 +6,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private GameObject[] skill1Prefabs;
     [SerializeField] private CoolDown[] coolDowns; // 추후 수정
 
+    // Methods
     public void CastSkill(string skillName, Vector3 direction, int skillLevel = 1)
     {
 

@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class SkillTreeManager : MonoBehaviour
 {
+    // Singleton
     public static SkillTreeManager Instance { get; private set; }
 
+    // Fields
     [SerializeField] private List<SkillInfo> allSkills;
 
-    // 🔹 skillAs → skillBranchA
-    // 🔹 skillBs → skillBranchB
     public List<SkillInfo> SkillBranchA { get; private set; } = new List<SkillInfo>();
     public List<SkillInfo> SkillBranchB { get; private set; } = new List<SkillInfo>();
 
+    // Unity Messages
     private void Awake()
     {
         if (Instance == null)
@@ -23,12 +24,12 @@ public class SkillTreeManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Start()
     {
         CategorizeSkills();
     }
 
+    // Functions
     private void CategorizeSkills()
     {
         foreach (var skill in allSkills)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill2 : SkillBase
@@ -8,9 +6,8 @@ public class Skill2 : SkillBase
     public int skillLevel = 1;
     public GameObject projectilePrefab;
 
-    // Methods
+    // Inheritances
     public override void SetDirection(Vector3 newDirection) { }
-
     protected override void Move()
     {
         Vector3[] directions = GetDirectionsByLevel(skillLevel);
@@ -22,6 +19,7 @@ public class Skill2 : SkillBase
         Destroy(gameObject);
     }
 
+    // Functions
     private void SpawnProjectile(Vector3 direction)
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
@@ -32,7 +30,6 @@ public class Skill2 : SkillBase
             skillBase.SetDirection(direction);
         }
     }
-
     private Vector3[] GetDirectionsByLevel(int level)
     {
         switch (level)

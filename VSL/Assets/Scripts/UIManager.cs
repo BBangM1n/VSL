@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +17,7 @@ public class UIManager : MonoBehaviour
         uiTimerUpdate();
     }
 
+    // Functions
     private void uiExpUpdate()
     {
         float curExp = GameManager.Instance.Exp;
@@ -47,11 +45,4 @@ public class UIManager : MonoBehaviour
         int sec = Mathf.FloorToInt(remainTime % 60);
         timerText.text = string.Format("{0:D2} : {1:D2}", min, sec);
     }
-
-    // Methods
-    // Functions
-    // Event Handlers
-
-    // Unity Coroutine
-    // Interface
 }

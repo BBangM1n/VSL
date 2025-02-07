@@ -1,14 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    // Delegate
-    // Events
-
-    // Definitions
-    // Properties
     // Fields
     [SerializeField] private GameObject[] prefabs;
 
@@ -19,19 +13,20 @@ public class PoolManager : MonoBehaviour
     {
         pools = new List<GameObject>[prefabs.Length];
 
-        for(int i = 0; i < pools.Length; i++)
+        for (int i = 0; i < pools.Length; i++)
         {
             pools[i] = new List<GameObject>();
         }
     }
 
+    // Methods
     public GameObject Get(int index)
     {
         GameObject select = null;
 
-        foreach(GameObject item in pools[index])
+        foreach (GameObject item in pools[index])
         {
-            if(!item.activeSelf)
+            if (!item.activeSelf)
             {
                 select = item;
                 select.SetActive(true);
@@ -39,7 +34,7 @@ public class PoolManager : MonoBehaviour
             }
         }
 
-        if(!select)
+        if (!select)
         {
             select = Instantiate(prefabs[index], transform);
             pools[index].Add(select);
@@ -47,11 +42,4 @@ public class PoolManager : MonoBehaviour
 
         return select;
     }
-
-    // Methods
-    // Functions
-    // Event Handlers
-
-    // Unity Coroutine
-    // Interface
 }

@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossSkill3 : SkillBase
 {
+    // Fields
     private Vector3 direction;
 
+    // Inheritances
     public override void SetDirection(Vector3 newDirection)
     {
         direction = newDirection.normalized;
@@ -13,7 +13,6 @@ public class BossSkill3 : SkillBase
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
-
     protected override void Move()
     {
         if (direction != Vector3.zero)

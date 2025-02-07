@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class CoolDown : MonoBehaviour
 {
+    // Fields
     [SerializeField] private Button button;
     [SerializeField] private Image coolDownImage;
 
@@ -25,5 +26,4 @@ public class CoolDown : MonoBehaviour
 
         button.interactable = true;
     }
-    // Interface
 }
